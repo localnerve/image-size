@@ -57,7 +57,9 @@ export const HEIF: IImage = {
 
       images.push({ height, width })
 
-      currentOffset = ispeBox.offset + ispeBox.size
+      // A zero-sized box would pin currentOffset in place, spinning this loop
+      // forever on crafted input (CVE-2025-71319). Always move past the header.
+      currentOffset = ispeBox.offset + (ispeBox.size > 0 ? ispeBox.size : 8)
     }
 
     if (images.length === 0) {
