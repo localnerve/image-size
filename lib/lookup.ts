@@ -1,7 +1,7 @@
-import { detector } from './detector'
-import type { imageType } from './types/index'
-import { typeHandlers } from './types/index'
-import type { ISizeCalculationResult } from './types/interface'
+import { detector } from './detector.ts'
+import type { imageType } from './types/index.ts'
+import { typeHandlers } from './types/index.ts'
+import type { ISizeCalculationResult } from './types/interface.ts'
 
 type Options = {
   disabledTypes: imageType[]
@@ -27,7 +27,7 @@ export function imageSize(input: Uint8Array): ISizeCalculationResult {
     }
 
     // find an appropriate handler for this file type
-    const size = typeHandlers.get(type)!.calculate(input)
+    const size = typeHandlers.get(type)?.calculate(input)
     if (size !== undefined) {
       size.type = size.type ?? type
 

@@ -1,12 +1,11 @@
 import * as assert from 'node:assert'
-import { readFileSync } from 'node:fs'
+import { globSync, readFileSync } from 'node:fs'
 import { extname, resolve } from 'node:path'
 import { describe, it } from 'node:test'
-import { sync as globSync } from 'glob'
 
-import { detector } from '../lib/detector'
-import type { ISizeCalculationResult } from '../lib/types/interface'
-import { imageSizeFromFile } from '../lib/fromFile'
+import { detector } from '../lib/detector.ts'
+import { imageSizeFromFile } from '../lib/fromFile.ts'
+import type { ISizeCalculationResult } from '../lib/types/interface.ts'
 
 const sizes: Record<string, ISizeCalculationResult> = {
   default: {

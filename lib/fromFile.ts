@@ -1,8 +1,8 @@
 import * as fs from 'node:fs'
 import * as path from 'node:path'
 
-import { imageSize } from './lookup'
-import type { ISizeCalculationResult } from './types/interface'
+import { imageSize } from './lookup.ts'
+import type { ISizeCalculationResult } from './types/interface.ts'
 
 // Maximum input size, with a default of 512 kilobytes.
 // TO-DO: make this adaptive based on the initial signature of the image

@@ -1,6 +1,11 @@
 // based on https://developers.google.com/speed/webp/docs/riff_container
-import type { IImage, ISize } from './interface'
-import { readInt16LE, readUInt24LE, toHexString, toUTF8String } from './utils'
+import type { IImage, ISize } from './interface.ts'
+import {
+  readInt16LE,
+  readUInt24LE,
+  toHexString,
+  toUTF8String,
+} from './utils.ts'
 
 function calculateExtended(input: Uint8Array): ISize {
   return {

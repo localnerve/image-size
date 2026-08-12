@@ -1,19 +1,13 @@
-# Tired maintainer doesn't want your slop
-Archiving this repo, because I don't want to deal with the same LLM generated "security advisory" about an inifinite loop over and over again.  
-I do not wish to participate in this sloppy mess of a platform. 
-Please do not create issues or advisories for me, and please do not summon me 🙏.
-
-At some point I'll revive this project to address actual issues, but on [Codeberg](https://codeberg.org/image-size/image-size).
-
-This repo on github will not be updated. 
-
----
-
 # image-size
 
-[![Build Status](https://circleci.com/gh/image-size/image-size.svg?style=shield)](https://circleci.com/gh/image-size/image-size)
-[![Package Version](https://img.shields.io/npm/v/image-size.svg)](https://www.npmjs.com/package/image-size)
-[![Downloads](https://img.shields.io/npm/dm/image-size.svg)](http://npm-stat.com/charts.html?package=image-size&author=netroy&from=&to=)
+> A fork of the original github.com/image-size/image-size repo with a reduced dependencies, security updates, and maintenance.
+
+## Original Repository Locations
+
+The current original repository lives on [Codeberg](https://codeberg.org/image-size/image-size).
+The original [Github repository](https://github.com/image-size/image-size) will not be updated.
+
+---
 
 Fast, lightweight NodeJS package to get dimensions of any image file or buffer.
 
@@ -50,11 +44,7 @@ Fast, lightweight NodeJS package to get dimensions of any image file or buffer.
 ## Installation
 
 ```shell
-npm install image-size
-# or
-yarn add image-size
-# or
-pnpm add image-size
+npm install @localnerve/image-size
 ```
 
 ## Usage
@@ -63,9 +53,9 @@ pnpm add image-size
 Best for streams, network requests, or when you already have the image data in memory.
 
 ```javascript
-import { imageSize } from 'image-size'
+import { imageSize } from '@localnerve/image-size'
 // or
-const { imageSize } = require('image-size')
+const { imageSize } = require('@localnerve/image-size')
 
 const dimensions = imageSize(buffer)
 console.log(dimensions.width, dimensions.height)
@@ -75,9 +65,9 @@ console.log(dimensions.width, dimensions.height)
 Best for local files. Returns a promise.
 
 ```javascript
-import { imageSizeFromFile } from 'image-size/fromFile'
+import { imageSizeFromFile } from '@localnerve/image-size/fromFile'
 // or
-const { imageSizeFromFile } = require('image-size/fromFile')
+const { imageSizeFromFile } = require('@localnerve/image-size/fromFile')
 
 const dimensions = await imageSizeFromFile('photos/image.jpg')
 console.log(dimensions.width, dimensions.height)
@@ -87,9 +77,9 @@ Note: Reading from files has a default concurrency limit of **100**
 To change this limit, you can call the `setConcurrency` function like this:
 
 ```javascript
-import { setConcurrency } from 'image-size/fromFile'
+import { setConcurrency } from '@localnerve/image-size/fromFile'
 // or
-const { setConcurrency } = require('image-size/fromFile')
+const { setConcurrency } = require('@localnerve/image-size/fromFile')
 setConcurrency(123456)
 ```
 
@@ -102,7 +92,7 @@ However if you still need to use this package syncronously, you can read the fil
 
 ```javascript
 import { readFileSync } from 'node:fs'
-import { imageSize } from 'image-size'
+import { imageSize } from '@localnerve/image-size'
 
 const buffer = readFileSync('photos/image.jpg')
 const dimensions = imageSize(buffer)
@@ -113,7 +103,7 @@ console.log(dimensions.width, dimensions.height)
 Useful for quick checks.
 
 ```shell
-npx image-size image1.jpg image2.png
+npx @localnerve/image-size image1.jpg image2.png
 ```
 
 ### Multi-size
@@ -123,9 +113,9 @@ If the target file/buffer is an HEIF, an ICO, or a CUR file, the `width` and `he
 An additional `images` array is available and returns the dimensions of all the available images
 
 ```javascript
-import { imageSizeFromFile } from 'image-size/fromFile'
+import { imageSizeFromFile } from '@localnerve/image-size/fromFile'
 // or
-const { imageSizeFromFile } = require('image-size/fromFile')
+const { imageSizeFromFile } = require('@localnerve/image-size/fromFile')
 
 const { images } = await imageSizeFromFile('images/multi-size.ico')
 for (const dimensions of images) {
@@ -138,7 +128,7 @@ for (const dimensions of images) {
 ```javascript
 import url from 'node:url'
 import http from 'node:http'
-import { imageSize } from 'image-size'
+import { imageSize } from '@localnerve/image-size'
 
 const imgUrl = 'http://my-amazing-website.com/image.jpeg'
 const options = url.parse(imgUrl)
@@ -159,9 +149,9 @@ http.get(options, function (response) {
 ### Disabling certain image types
 
 ```javascript
-import { disableTypes } from 'image-size'
+import { disableTypes } from '@localnerve/image-size'
 // or
-const { disableTypes } = require('image-size')
+const { disableTypes } = require('@localnerve/image-size')
 
 disableTypes(['tiff', 'ico'])
 ```
@@ -171,9 +161,9 @@ disableTypes(['tiff', 'ico'])
 If the orientation is present in the JPEG EXIF metadata, it will be returned by the function. The orientation value is a [number between 1 and 8](https://exiftool.org/TagNames/EXIF.html#:~:text=0x0112,8%20=%20Rotate%20270%20CW) representing a type of orientation.
 
 ```javascript
-import { imageSizeFromFile } from 'image-size/fromFile'
+import { imageSizeFromFile } from '@localnerve/image-size/fromFile'
 // or
-const { imageSizeFromFile } = require('image-size/fromFile')
+const { imageSizeFromFile } = require('@localnerve/image-size/fromFile')
 
 const { width, height, orientation } = await imageSizeFromFile('images/photo.jpeg')
 console.log(width, height, orientation)
@@ -203,7 +193,10 @@ MIT
 
 ## Credits
 
-not a direct port, but an attempt to have something like
-[dabble's imagesize](https://github.com/dabble/imagesize/blob/master/lib/image_size.rb) as a node module.
+**Original Author**: netroy <aditya@netroy.in> (http://netroy.in/)
+
+## Maintainers
+
+**Alex Grant**: [@localnerve](https://github.com/localnerve)
 
 ## [Contributors](Contributors.md)

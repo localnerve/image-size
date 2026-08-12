@@ -1,19 +1,19 @@
-import { describe, it } from 'node:test'
 import * as assert from 'node:assert'
+import { describe, it } from 'node:test'
 import {
-  toUTF8String,
-  toHexString,
+  findBox,
   readInt16LE,
+  readInt32LE,
+  readUInt,
   readUInt16BE,
   readUInt16LE,
   readUInt24LE,
-  readInt32LE,
   readUInt32BE,
   readUInt32LE,
-  readUInt,
-  findBox,
   readUInt64,
-} from '../lib/types/utils'
+  toHexString,
+  toUTF8String,
+} from '../lib/types/utils.ts'
 
 describe('Utils', () => {
   describe('toUTF8String', () => {

@@ -4,10 +4,13 @@ export class BitReader {
   private byteOffset = 2
   private bitOffset = 0
 
-  constructor(
-    private readonly input: Uint8Array,
-    private readonly endianness: 'big-endian' | 'little-endian',
-  ) {}
+  private readonly input: Uint8Array
+  private readonly endianness: 'big-endian' | 'little-endian'
+
+  constructor(input: Uint8Array, endianness: 'big-endian' | 'little-endian') {
+    this.input = input
+    this.endianness = endianness
+  }
 
   /** Reads a specified number of bits, and move the offset */
   getBits(length = 1): number {

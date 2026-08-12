@@ -1,5 +1,5 @@
-import type { IImage, ISize } from './interface'
-import { findBox, readUInt32BE, toUTF8String } from './utils'
+import type { IImage, ISize } from './interface.ts'
+import { findBox, readUInt32BE, toUTF8String } from './utils.ts'
 
 const brandMap = {
   avif: 'avif',
@@ -49,7 +49,7 @@ export const HEIF: IImage = {
       // Look for a clap box after the ispe box
       const clapBox = findBox(input, 'clap', currentOffset)
       let width = rawWidth
-      let height = rawHeight
+      const height = rawHeight
       if (clapBox && clapBox.offset < ipcoBox.offset + ipcoBox.size) {
         const cropRight = readUInt32BE(input, clapBox.offset + 12)
         width = rawWidth - cropRight

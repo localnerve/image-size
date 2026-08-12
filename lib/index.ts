@@ -1,2 +1,2 @@
-export { types } from './types'
-export { imageSize, imageSize as default, disableTypes } from './lookup'
+export { disableTypes, imageSize, imageSize as default } from './lookup.ts'
+export { types } from './types/index.ts'

@@ -1,7 +1,7 @@
 import * as assert from 'node:assert'
 import { describe, it } from 'node:test'
 
-import { BitReader } from '../lib/utils/bit-reader'
+import { BitReader } from '../lib/utils/bit-reader.ts'
 
 describe('BitReader', () => {
   describe('Big-endian mode', () => {
