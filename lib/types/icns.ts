@@ -22,6 +22,9 @@ const FILE_LENGTH_OFFSET = 4 // MSB => BIG ENDIAN
  */
 const ENTRY_LENGTH_OFFSET = 4 // MSB => BIG ENDIAN
 
+// An entry's declared length includes its own 8-byte header (type + length)
+const ENTRY_HEADER_SIZE = 8
+
 const ICON_TYPE_SIZE: Record<string, number> = {
   ICON: 32,
   'ICN#': 32,
@@ -95,7 +98,12 @@ export const ICNS: IImage = {
       const imageHeader = readImageHeader(input, imageOffset)
       const imageSize = getImageSize(imageHeader[0])
       images.push(imageSize)
-      imageOffset += imageHeader[1]
+      
+      const entryLength = imageHeader[1]
+      // A length below the 8-byte entry header (e.g. 0) can never advance the
+      // offset, spinning this loop forever on crafted input (CVE-2025-71330).
+      if (entryLength < ENTRY_HEADER_SIZE) break
+      imageOffset += entryLength
     }
 
     if (images.length === 0) {
