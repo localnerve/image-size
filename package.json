@@ -1,6 +1,6 @@
 {
   "name": "@localnerve/image-size",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "description": "Get dimensions of any image file",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
