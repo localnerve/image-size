@@ -98,7 +98,7 @@ export const ICNS: IImage = {
       const imageHeader = readImageHeader(input, imageOffset)
       const imageSize = getImageSize(imageHeader[0])
       images.push(imageSize)
-      
+
       const entryLength = imageHeader[1]
       // A length below the 8-byte entry header (e.g. 0) can never advance the
       // offset, spinning this loop forever on crafted input (CVE-2025-71330).
