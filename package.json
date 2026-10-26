@@ -1,6 +1,6 @@
 {
   "name": "@localnerve/image-size",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Get dimensions of any image file",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -102,9 +102,9 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@biomejs/biome": "^2.5.13",
-    "@types/node": "^26.5.1",
-    "tsup": "8.5.1",
+    "@biomejs/biome": "^2.6.3",
+    "@types/node": "^26.6.5",
+    "tsup": "9.0.0",
     "typescript": "7.0.2"
   },
   "allowScripts": {
